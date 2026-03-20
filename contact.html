@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Hexaplast Industries Pvt. Ltd.</title>
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/coustm.css" />
+    <link rel="icon" href="logo_hexa.png" />
+    <link rel="apple-touch-icon" href="logo_hexa.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <style>
+      :root {
+        --orange: #f58220;
+        --dark: #5a5a5a;
+        --mid: #8a8a8a;
+        --light: #f5f5f5;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #f7f7f7;
+        color: var(--mid);
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background: #fff;
+        padding: 20px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      header img {
+        height: 90px;
+      }
+
+      /* ===== HERO ===== */
+      .contact-hero {
+        background: linear-gradient(120deg, #ffffff, #f1f1f1);
+        padding: 90px 20px;
+        text-align: center;
+      }
+      .contact-hero h1 {
+        font-size: 42px;
+        color: var(--dark);
+        margin-bottom: 10px;
+      }
+      .contact-hero p {
+        font-size: 18px;
+      }
+
+      /* ===== MAIN SECTION ===== */
+      .contact-section {
+        padding: 80px 6%;
+        background: #fff;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+      }
+
+      /* INFO BOX */
+      .contact-info {
+        background: #f9f9f9;
+        padding: 40px;
+        border-radius: 24px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+      .contact-info h2 {
+        color: var(--dark);
+        margin-bottom: 20px;
+      }
+      .contact-info p {
+        font-size: 16px;
+        margin-bottom: 14px;
+        line-height: 1.6;
+      }
+
+      /* FORM */
+      .contact-form {
+        background: #f9f9f9;
+        padding: 40px;
+        border-radius: 24px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+      .contact-form h2 {
+        color: var(--dark);
+        margin-bottom: 20px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 14px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: var(--orange);
+      }
+      .contact-form button {
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        padding: 14px 36px;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .contact-form button:hover {
+        background: #e06f10;
+      }
+
+      /* ===== FIX INTL TEL INPUT WIDTH ===== */
+      .iti {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .iti input {
+        width: 100%;
+        height: 48px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+      }
+
+      /* Flag dropdown height fix */
+      .iti__flag-container {
+        padding-left: 2px;
+      }
+
+      /* Focus effect same as other inputs */
+      .iti input:focus {
+        outline: none;
+        border-color: var(--orange);
+      }
+
+      /* MAP */
+      .map-section {
+        padding: 0 6% 80px;
+        background: #fff;
+      }
+      .map-box {
+        width: 100%;
+        height: 430px;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .contact-hero h1 {
+          font-size: 34px;
+        }
+        .contact-section {
+          padding: 50px 20px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .map-section {
+          padding: 0 20px 50px;
+        }
+      }
+
+      /* what start */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        width: 60px;
+        height: 60px;
+        background: #f58220; /* Hexaplast Orange */
+        color: #fff;
+        font-size: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        z-index: 999;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+      }
+
+      /* what end */
+
+      /* thank you start */
+
+      .success-popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s ease;
+      }
+
+      .success-popup.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .popup-box {
+        background: #fff;
+        padding: 40px 30px;
+        border-radius: 20px;
+        text-align: center;
+        width: 90%;
+        max-width: 360px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .checkmark {
+        width: 70px;
+        height: 70px;
+        background: #f58220;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        margin: 0 auto 20px;
+      }
+
+      .popup-box h2 {
+        color: #5a5a5a;
+        margin-bottom: 10px;
+      }
+      .popup-box p {
+        font-size: 15px;
+      }
+      /* thank you end */
+    </style>
+  </head>
+
+  <body>
+    <a
+      href="https://wa.me/9537911333"
+      class="whatsapp-float"
+      target="_blank"
+      title="Chat on WhatsApp"
+    >
+      💬
+    </a>
+    <!-- ===== NAVBAR ===== -->
+    <header>
+      <img src="img/hexa-logo.png" alt="Hexaplast Logo" />
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallry.html">Gallery</a></li>
+
+          <!-- MACHINES DROPDOWN -->
+          <li class="dropdown">
+            <a href="Product.html">Product ▾</a>
+            <ul class="dropdown-menu" id="machinesMenu">
+              <li>
+                <a href="tensile.html">Universal Tensile Testing Machine</a>
+              </li>
+              <li><a href="Muffle_Furnace.HTML">Muffle Furnace</a></li>
+              <li><a href="UV_Weathering.html">UV Weathering Tester</a></li>
+              <li>
+                <a href="Flammability_Chamber.html">Flammability Chamber</a>
+              </li>
+              <li><a href="Hot_air_oven.html">Hot Air Oven</a></li>
+              <li><a href="TearTester.html">Tear Tester</a></li>
+              <li><a href="density_balance.html">Density Balance</a></li>
+              <li><a href="stability_chamber.html">Stability Chamber</a></li>
+              <!-- aaj rite 20 machines add kari sako -->
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="contact-hero">
+      <h1>Contact Us</h1>
+      <p>We are here to help you with precision rubber testing solutions</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section">
+      <div class="contact-grid">
+        <!-- INFO -->
+        <div class="contact-info">
+          <h2>Hexaplast Industries Pvt. Ltd.</h2>
+          <p>
+            📍 <strong>Address:</strong><br /><b>India UNIT- I:-</b> L-4126/1,
+            Phase IV, G.I.D.C. Vatva, Nr. Nika tube cross Road, B/h. New Nirma ,
+            Vatava , Ahmedabad. Gujarat. India.<br /><br />
+            <b>India UNIT- II:-</b> Plot No. 4008, Phase IV, G.I.D.C. Vatva, Nr.
+            Nika tube cross Road, B/h. New Nirma , Vatava , Ahmedabad. Gujarat.
+            India. <br /><br /><b> USA:-</b> Hexaplast USA LLC 15, Great Pasture
+            Road Danbury CT 06801
+          </p>
+          <p>
+            📞 <strong>Phone:</strong><br />+91 98250 31377 / +91 98250 88726
+          </p>
+          <p>✉️ <strong>Email:</strong><br />sales@hexaplastindia.com</p>
+          <p>
+            🕒 <strong>Working Hours:</strong><br />Mon – Sat | 9:30 AM – 6:30
+            PM
+          </p>
+        </div>
+
+        <!-- FORM -->
+        <div class="contact-form">
+          <h2>Send Inquiry</h2>
+          <form id="contactForm">
+            <input id="name" type="text" placeholder="Your Name" required />
+            <input
+              id="text"
+              type="text"
+              placeholder="Your Company Name"
+              required
+            />
+            <input id="email" type="email" placeholder="Your Email" required />
+            <input id="phone" type="tel" placeholder="Mobile Number" required />
+            <textarea
+              id="message"
+              rows="5"
+              placeholder="Your Message"
+            ></textarea>
+            <button type="submit">Send on WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div id="successPopup" class="success-popup">
+      <div class="popup-box">
+        <div class="checkmark">✔</div>
+        <h2>Thank You!</h2>
+        <p>
+          Your inquiry has been sent successfully.<br />
+          We will contact you shortly.
+        </p>
+      </div>
+    </div>
+
+    <!-- MAP -->
+    <section class="map-section">
+      <div class="map-box">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d840.6020798198665!2d72.64107596118373!3d22.97600949193628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e896cbbb56e33%3A0x78842b8d3444d957!2sHexaPlast%20-%20Manufacturer%20of%20Plastic%20Lab%20Testing%20Equipment!5e1!3m2!1sen!2sin!4v1767172956943!5m2!1sen!2sin"
+          width="100%"
+          height="430"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- footer start -->
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <img src="img/hexa-logo-png.png" width="300px" height="90px" alt="" />
+          <img src="img/hexa-logo.png" width="300px" height="90px" alt="" />
+          <p style="padding: 10px">
+            Manufacturer of precision rubber testing machines delivering
+            accuracy, durability and reliable performance for industrial
+            applications.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallry.html">Gallery</a></li>
+            <li><a href="Product.html">Our Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Service & Support</h3>
+          <p>
+            <strong style="color: #ffffff">📞 Call</strong><br />+91 95379 77333
+            <br />
+            +91 97140 38333
+          </p>
+          <p>✉️ info@hexaplastindia.com</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p>
+            <i class="fas fa-map-marker-alt" style="color: #e06f10"></i>
+            <br /><b>India UNIT- I:-</b> L-4126/1, Phase IV, G.I.D.C. Vatva, Nr.
+            Nika tube cross Road, B/h. New Nirma , Vatava , Ahmedabad. Gujarat.
+            India.
+          </p>
+
+          <p>
+            <i class="fas fa-map-marker-alt" style="color: #e06f10"></i> <br />
+            <b>India UNIT- II:-</b> Plot No. 4008, Phase IV, G.I.D.C. Vatva, Nr.
+            Nika tube cross Road, B/h. New Nirma , Vatava , Ahmedabad. Gujarat.
+            India.
+          </p>
+
+      
+
+          <p>
+            <i class="fas fa-phone-alt" style="color: #e06f10"></i> <br>
+             +91 98250 31377 <br />+91 98250 88726</p>
+
+          <p>
+            <i class="fas fa-envelope" style="color: #e06f10"></i> <br>
+             sales@hexaplastindia.com</p>
+
+          <!-- Footer Social Icons -->
+          <div class="social-footer">
+            <a
+              href="https://www.youtube.com/@hexaplastindia1461"
+              target="_blank"
+              class="yt"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/hexaplast18/"
+              target="_blank"
+              class="ig"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.facebook.com/hexa.plast"
+              target="_blank"
+              class="fb"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://wa.me/9537911333" target="_blank" class="wa">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Hexaplast Industries Pvt. Ltd. | All Rights Reserved
+      </div>
+    </footer>
+    <!-- footer end -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          var name = document.getElementById("name").value;
+          var text = document.getElementById("text").value;
+          var email = document.getElementById("email").value;
+          var phone = iti.getNumber();
+          var message = document.getElementById("message").value;
+
+          var whatsappNumber = "919537911333"; // YOUR NUMBER
+
+          var text =
+            "Hello Hexaplast Team 👋%0A%0A" +
+            "I would like to inquire about rubber testing machines.%0A%0A" +
+            "Name: " +
+            name +
+            "%0A" +
+            "Your Company Name: " +
+            text +
+            "%0A" +
+            "Email: " +
+            email +
+            "%0A" +
+            "Phone: " +
+            phone +
+            "%0A" +
+            "Message: " +
+            message +
+            "%0A%0A" +
+            "Thank you.";
+
+          // Show success popup
+          document.getElementById("successPopup").classList.add("active");
+
+          // Open WhatsApp after short delay
+          setTimeout(function () {
+            window.open(
+              "https://wa.me/" + whatsappNumber + "?text=" + text,
+              "_blank"
+            );
+          }, 700);
+
+          // Refresh page after popup
+          setTimeout(function () {
+            window.location.reload();
+          }, 3000);
+        });
+
+      // phone
+      const phoneInput = document.querySelector("#phone");
+
+      const iti = window.intlTelInput(phoneInput, {
+        initialCountry: "in", // default India
+        separateDialCode: true, // +91 separate
+        preferredCountries: ["in", "us", "gb", "ae"],
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+      });
+    </script>
+
+    <!-- foter end -->
+  </body>
+</html>

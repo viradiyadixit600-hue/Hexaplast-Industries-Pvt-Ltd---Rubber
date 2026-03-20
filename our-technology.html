@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- META -->
+    <meta charset="UTF-8" />
+    <meta name="description" content="Sum Number" />
+    <meta name="keywords" content="Sum Number" />
+    <meta name="author" content="dixt viradiya" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TATLE -->
+    <title>Our Technology | Hexaplast</title>
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/coustm.css" />
+    <link rel="icon" href="logo_hexa.png" />
+    <link rel="apple-touch-icon" href="logo_hexa.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <style>
+      :root {
+        --orange: #f58220;
+        --dark-grey: #5a5a5a;
+        --mid-grey: #8a8a8a;
+        --light-grey: #f5f5f5;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+      body {
+        background: #ffffff;
+        color: var(--mid-grey);
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background: #fff;
+        padding: 20px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      header img {
+        height: 90px;
+      }
+
+      /* ===== PAGE TITLE ===== */
+      .page-title {
+        background: linear-gradient(135deg, #f9f9f9, #ffffff);
+        padding: 80px;
+        text-align: center;
+      }
+      .page-title h1 {
+        font-size: 42px;
+        color: var(--dark-grey);
+      }
+      .page-title p {
+        font-size: 18px;
+        margin-top: 15px;
+      }
+
+      /* ===== TECHNOLOGY SECTION ===== */
+      .tech-section {
+        padding: 90px 80px;
+      }
+      .tech-intro {
+        max-width: 800px;
+        margin: auto;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .tech-section h1 {
+        display: flex;
+        justify-content: center; /* horizontal center */
+        align-items: center;
+        padding-bottom: 20px;
+      }
+
+      .tech-intro p {
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      /* ===== TECH CARDS ===== */
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 35px;
+      }
+      .tech-card {
+        background: var(--light-grey);
+        padding: 35px;
+        border-radius: 24px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-top: 5px solid var(--orange);
+      }
+      .tech-card h3 {
+        color: var(--dark-grey);
+        margin-bottom: 15px;
+      }
+      .tech-card p {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      /* ===== PROCESS ===== */
+      .process {
+        margin-top: 90px;
+        text-align: center;
+      }
+      .process h2 {
+        font-size: 36px;
+        color: var(--dark-grey);
+        margin-bottom: 40px;
+      }
+      .process-flow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+      }
+      .flow-box {
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--dark-grey);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+      .flow-box:hover {
+        transform: translateY(-6px);
+      }
+
+      /* ===== POPUP ===== */
+      .process {
+        margin-top: 90px;
+        text-align: center;
+      }
+      .process h2 {
+        font-size: 36px;
+        color: var(--dark-grey);
+        margin-bottom: 40px;
+      }
+      .process-flow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+      }
+
+      #popupImg {
+        max-height: 70vh;
+        max-width: 90vw;
+        object-fit: contain;
+      }
+
+      .flow-box {
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--dark-grey);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+      .flow-box:hover {
+        transform: translateY(-6px);
+      }
+
+      /* ===== POPUP BLUR ===== */
+      .popup-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(6px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+      }
+      .popup-box {
+        background: #fff;
+        max-width: 430px;
+        width: 90%;
+        padding: 30px;
+        border-radius: 24px;
+        text-align: center;
+        position: relative;
+        animation: popup 0.35s ease;
+      }
+      .popup-box img {
+        width: 100%;
+        border-radius: 16px;
+        margin-bottom: 20px;
+      }
+      .popup-box h3 {
+        color: var(--dark-grey);
+        margin-bottom: 10px;
+      }
+      .popup-box p {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 18px;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--orange);
+      }
+
+      @keyframes popup {
+        from {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* ===== BACK BUTTON ===== */
+
+      .back_btm {
+        display: flex;
+        justify-content: center; /* horizontal center */
+        align-items: center;
+      }
+
+      .back-btn {
+        display: inline-block;
+        margin-top: 60px;
+        background: var(--orange);
+        color: #fff;
+        padding: 14px 32px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .back-btn:hover {
+        background: #929292;
+        color: #fff;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 900px) {
+        header,
+        .page-title,
+        .tech-section {
+          padding: 40px 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <!-- body -->
+  <body>
+    <header>
+      <a href="https://hexaplastindia.com/">
+        <img src="img/hexa-logo.png" alt="Hexaplast Logo" />
+      </a>
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallry.html">Gallery</a></li>
+
+          <!-- MACHINES DROPDOWN -->
+          <li class="dropdown">
+            <a href="Product.html">Product ▾</a>
+            <ul class="dropdown-menu" id="machinesMenu">
+              <li>
+                <a href="tensile.html">Universal Tensile Testing Machine</a>
+              </li>
+              <li><a href="Muffle_Furnace.HTML">Muffle Furnace</a></li>
+              <li><a href="UV_Weathering.html">UV Weathering Tester</a></li>
+              <li>
+                <a href="Flammability_Chamber.html">Flammability Chamber</a>
+              </li>
+              <li><a href="Hot_air_oven.html">Hot Air Oven</a></li>
+              <li><a href="TearTester.html">Tear Tester</a></li>
+              <li><a href="density_balance.html">Density Balance</a></li>
+              <li><a href="stability_chamber.html">Stability Chamber</a></li>
+              <!-- aaj rite 20 machines add kari sako -->
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="tech-section">
+      <h1>Our Technology</h1>
+      <div class="tech-intro">
+        <p>
+          Hexaplast Industries Pvt. Ltd. manufactures rubber testing machines
+          using advanced engineering, precision sensors, and modern control
+          systems, ensuring reliable and repeatable results in accordance with
+          international standards.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3>Precision Sensor Technology</h3>
+          <p>High accuracy measurement with long-term stability & Reliable.</p>
+        </div>
+
+         <div class="tech-card">
+          <h3>Advanced Display & Software</h3>
+          <p>Digital display with optional PC connectivity & data logging.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3>Robust Mechanical Design</h3>
+          <p>Heavy-duty structure ensuring vibration-free operation.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3>International Standards</h3>
+          <p>Machines designed as per ASTM, ISO & BIS standards.</p>
+        </div>
+
+        
+      </div>
+
+      <!-- testing process -->
+      <section class="process">
+        <h2>Quality Assurance</h2>
+
+        <div class="process-flow">
+          <div
+            class="flow-box"
+            data-img="img/51.jpg"
+            data-title="Visual inspection"
+            data-text="Hexaplast, every product undergoes detailed visual inspection."
+            onclick="openPopup(this)"
+          >
+            Visual inspection
+          </div>
+          <div
+            class="flow-box"
+            data-img="img/101.gif"
+            data-title="Operational Testing"
+            data-text="Hexaplast, every product undergoes working trial and performance testing."
+            onclick="openPopup(this)"
+          >
+            Operational Testing
+          </div>
+
+          <div
+            class="flow-box"
+            data-img="img/5.jpg"
+            data-title=" Calibration"
+            data-text="Calibration is performed to ensure accurate results."
+            onclick="openPopup(this)"
+          >
+            Standard Calibration 
+          </div>
+
+          <div
+            class="flow-box"
+            data-img="img/102.gif"
+            data-title="Sample Testing"
+            data-text="Testing of achual materials for quality assurance."
+            onclick="openPopup(this)">
+             Sample Testing
+          </div>
+        </div>
+      </section>
+      <!-- ===== POPUP ===== -->
+      <div class="popup-overlay" id="popup" onclick="outsideClose(event)">
+        <div class="popup-box">
+          <span class="close-btn" onclick="closePopup()">x</span>
+
+          <img id="popupImg" src="" alt="" />
+          <h3 id="popupTitle"></h3>
+          <p id="popupText"></p>
+        </div>
+      </div>
+      <div class="back_btm">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+      </div>
+    </section>
+
+    <!-- footer start -->
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <img src="img/hexa-logo-png.png" width="300px" height="90px" alt="" />
+          <img src="img/hexa-logo.png" width="300px" height="90px" alt="" />
+          <p style="padding: 10px">
+            Manufacturer of precision rubber testing machines delivering
+            accuracy, durability and reliable performance for industrial
+            applications.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="gallry.html">Gallery</a></li>
+            <li><a href="Product.html">Our Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Service & Support</h3>
+          <p>
+            <strong style="color: #ffffff">📞 Call</strong><br />+91 95379 77333
+            <br />
+            +91 97140 38333
+          </p>
+          <p>✉️ info@hexaplastindia.com</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p>
+            📍 (i) <br /><b>India UNIT- I:-</b> L-4126/1, Phase IV, G.I.D.C.
+            Vatva, Nr. Nika tube cross Road, B/h. New Nirma , Vatava ,
+            Ahmedabad. Gujarat. India.
+          </p>
+
+          <p>
+            (ii) <br />
+            <b> India UNIT- II:-</b> Plot No. 4008, Phase IV, G.I.D.C. Vatva,
+            Nr. Nika tube cross Road, B/h. New Nirma , Vatava , Ahmedabad.
+            Gujarat. India.
+          </p>
+
+          <p>📞 +91 98250 31377 <br />+91 98250 88726</p>
+          <p>✉️ sales@hexaplastindia.com</p>
+
+          <!-- Footer Social Icons -->
+          <div class="social-footer">
+            <a
+              href="https://www.youtube.com/@hexaplastindia1461"
+              target="_blank"
+              class="yt"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/hexaplast18/"
+              target="_blank"
+              class="ig"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.facebook.com/hexa.plast"
+              target="_blank"
+              class="fb"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://wa.me/919016556935" target="_blank" class="wa">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Hexaplast Industries Pvt. Ltd. | All Rights Reserved
+      </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <!-- CUSTOM js -->
+    <script src="js/all.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/iziToast.min.js"></script>
+    <script src="js/sweetalert2@11.js"></script>
+    <script src="server/server.js"></script>
+    <script src="js/coustm.js"></script>
+  </body>
+</html>

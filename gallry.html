@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gallery | Hexaplast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/coustm.css" />
+    <link rel="icon" href="logo_hexa.png" />
+    <link rel="apple-touch-icon" href="logo_hexa.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <style>
+      :root {
+        --orange: #f58220;
+        --dark: #444;
+        --light: #f6f6f6;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Segoe UI, Arial;
+      }
+      body {
+        background: #fff;
+        color: var(--dark);
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background: #fff;
+        padding: 20px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      header img {
+        height: 90px;
+      }
+
+      /* ===== TITLE ===== */
+      .headerr {
+        padding: 70px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #fafafa, #fff);
+      }
+      .headerr h1 {
+        font-size: 42px;
+      }
+      .headerr p {
+        margin-top: 10px;
+        color: #777;
+      }
+
+      /* ===== SLIDER ===== */
+      .slider {
+        width: 100%;
+        height: 380px;
+        overflow: hidden;
+        position: relative;
+      }
+      .slider img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* animation:slide 5s infinite; */
+      }
+      @keyframes slide {
+        0% {
+          opacity: 1;
+        }
+        33% {
+          opacity: 0;
+        }
+        66% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* ===== GALLERY SECTION ===== */
+
+      .gallery-section {
+        padding: 90px 80px;
+        background: #ffffff;
+        text-align: center;
+      }
+      .gallery-section h2 {
+        font-size: 38px;
+        color: var(--dark-grey);
+        margin-bottom: 10px;
+      }
+      .gallery-sub {
+        font-size: 18px;
+        color: var(--mid-grey);
+        margin-bottom: 50px;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+      .gallery-item {
+        position: relative;
+        border-radius: 22px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      .gallery-item:hover {
+        transform: translateY(-8px);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        background: #ffffff; /* empty space clean દેખાય */
+      }
+
+      /* 🔍 ZOOM ON HOVER */
+      .gallery-item:hover img {
+        transform: scale(1.12);
+      }
+
+      /* ===== MODAL ===== */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-content {
+        background: #fff;
+        width: 80%;
+        max-width: 900px;
+        border-radius: 24px;
+        padding: 30px;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+      .modal-content img {
+        width: 100%;
+        max-height: 420px;
+        object-fit: contain; /* 👈 CUT બંધ */
+        background: #f5f5f5;
+        border-radius: 18px;
+      }
+      .modal-text h3 {
+        color: var(--dark-grey);
+        margin-bottom: 15px;
+      }
+      .modal-text p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--mid-grey);
+        text-align: justify;
+      }
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 32px;
+        cursor: pointer;
+        color: #333;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 900px) {
+        .gallery-section {
+          padding: 50px 30px;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .modal-content {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 600px) {
+        .headerr h1 {
+          font-size: 32px;
+        }
+        .counter {
+          gap: 20px;
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 900px) {
+        header,
+        .page-title,
+        .gallery {
+          padding: 40px 30px;
+        }
+      }
+
+      /* video dipatment start */
+
+      /* ===== SECTION ===== */
+      .tech-video-section {
+        padding: 90px 20px;
+        text-align: center;
+        background: #ffffff;
+      }
+
+      .tech-video-section h2 {
+        font-size: 38px;
+        color: var(--dark-grey);
+        margin-bottom: 10px;
+      }
+
+      .tech-sub {
+        font-size: 18px;
+        color: var(--mid-grey);
+        margin-bottom: 50px;
+      }
+
+      /* ===== VIDEO THUMB ===== */
+      .video-thumb {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto 40px;
+        cursor: pointer;
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .video-thumb video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* ===== PLAY ICON ===== */
+      .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: rgba(245, 130, 32, 0.95);
+        color: #fff;
+        font-size: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse 1.8s infinite;
+      }
+
+      .video-thumb:hover .play-icon {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      /* pulse */
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(245, 130, 32, 0.6);
+        }
+        70% {
+          box-shadow: 0 0 0 25px rgba(245, 130, 32, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(245, 130, 32, 0);
+        }
+      }
+
+      /* ===== SUBSCRIBE BUTTON ===== */
+      .subscribe-btn {
+        display: inline-block;
+        background: var(--orange);
+        color: #fff;
+        padding: 14px 34px;
+        border-radius: 40px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .subscribe-btn:hover {
+        transform: translateY(-3px);
+        color: #ffffff;
+        box-shadow: 0 10px 25px rgba(245, 130, 32, 0.4);
+      }
+
+      /* ===== POPUP MODAL ===== */
+      .video-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        display: none;
+        object-fit: contain;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .video-modal.active {
+        display: flex;
+      }
+
+      /* ===== POPUP BOX ===== */
+      .video-popup-box {
+        width: 85%;
+        max-width: 900px;
+        background: #000;
+        border-radius: 22px;
+        overflow: hidden;
+        transform: scale(0.85);
+        opacity: 0;
+        transition: all 0.35s ease;
+      }
+
+      .video-modal.active .video-popup-box {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .video-popup-box video {
+        width: 100%;
+        height: 500px;
+        object-fit: contain;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 900px) {
+        .video-popup-box video {
+          height: 280px;
+        }
+        .play-icon {
+          width: 70px;
+          height: 70px;
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .tech-video-section h2 {
+          font-size: 30px;
+        }
+      }
+
+      /* video dipatment end */
+
+      /* CERTIFICATES SECTION start */
+
+      /* ===== SECTION ===== */
+      .certificate-section {
+        padding: 90px 30px;
+        background: #f9f9f9;
+        text-align: center;
+      }
+
+      .certificate-section h2 {
+        font-size: 38px;
+        color: var(--dark-grey);
+        margin-bottom: 10px;
+      }
+
+      .cert-sub {
+        font-size: 18px;
+        color: var(--mid-grey);
+        margin-bottom: 60px;
+      }
+
+      /* ===== GRID ===== */
+      .certificate-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 35px;
+      }
+
+      /* ===== CARD ===== */
+      .certificate-card {
+        background: #fff;
+        border-radius: 22px;
+        padding: 25px;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+
+      .certificate-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+      }
+
+      /* IMAGE */
+      .certificate-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+        background: #f5f5f5;
+        padding: 15px;
+        border-radius: 16px;
+      }
+
+      .certificate-card h4 {
+        margin-top: 18px;
+        font-size: 16px;
+        color: var(--dark-grey);
+      }
+
+      /* ===== POPUP MODAL ===== */
+      .cert-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cert-modal.active {
+        display: flex;
+      }
+
+      /* ===== POPUP BOX ===== */
+      .cert-popup-box {
+        max-width: 90%;
+        max-height: 90%;
+        background: #fff;
+        border-radius: 22px;
+        padding: 20px;
+        border: 4px solid var(--orange);
+
+        transform: scale(0.85);
+        opacity: 0;
+        transition: all 0.35s ease;
+      }
+
+      .cert-modal.active .cert-popup-box {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .cert-popup-box img {
+        width: 100%;
+        height: 80vh;
+        object-fit: contain;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1200px) {
+        .certificate-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 900px) {
+        .certificate-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .certificate-grid {
+          grid-template-columns: 1fr;
+        }
+        .certificate-section h2 {
+          font-size: 30px;
+        }
+        .cert-popup-box img {
+          height: 60vh;
+        }
+      }
+      /* CERTIFICATES SECTION end */
+
+      /* catlog start */
+
+      /* Section Base */
+      .catalog-section {
+        padding: 80px 20px;
+        background: #f5f6f8;
+        text-align: center;
+      }
+
+      .catalog-section h2 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+
+      .catalog-sub {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 50px;
+      }
+
+      /* Grid */
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      /* Card */
+      .catalog-card {
+        background: #fff;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease;
+      }
+
+      .catalog-card:hover {
+        transform: translateY(-6px);
+      }
+
+      /* Image */
+      .catalog-card img {
+        width: 100%;
+        height: 240px;
+        object-fit: contain; /* FULL IMAGE SHOW */
+        background: #f3f3f3; /* blank space neat lage */
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      /* Text */
+      .catalog-card h3 {
+        margin: 20px 0 10px;
+        font-size: 22px;
+      }
+
+      .catalog-card p {
+        font-size: 15px;
+        color: #555;
+      }
+
+      /* Buttons */
+      .catalog-btns {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .catalog-btns a {
+        padding: 12px 26px;
+        border-radius: 30px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .view-btn {
+        background: #3f3f3f;
+        color: #fff;
+      }
+
+      .download-btn {
+        background: #25d366;
+        color: #fff;
+      }
+
+      .catalog-btns a:hover {
+        opacity: 0.85;
+      }
+
+      /* ========================= */
+      /* RESPONSIVE BREAKPOINTS   */
+      /* ========================= */
+
+      /* Tablets */
+      @media (max-width: 1024px) {
+        .catalog-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .catalog-card img {
+          height: 220px;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        .catalog-section h2 {
+          font-size: 30px;
+        }
+
+        .catalog-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .catalog-card {
+          padding: 20px;
+        }
+
+        .catalog-card img {
+          height: 200px;
+        }
+      }
+
+      /* Small Mobile */
+      @media (max-width: 480px) {
+        .catalog-section {
+          padding: 60px 15px;
+        }
+
+        .catalog-card h3 {
+          font-size: 20px;
+        }
+
+        .catalog-btns {
+          flex-direction: column;
+        }
+
+        .catalog-btns a {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      /* catlog end */
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <header>
+      <img src="img/hexa-logo.png" alt="Hexaplast Logo" />
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallry.html">Gallery</a></li>
+
+          <!-- MACHINES DROPDOWN -->
+          <li class="dropdown">
+            <a href="Product.html">Product ▾</a>
+            <ul class="dropdown-menu" id="machinesMenu">
+              <li>
+                <a href="tensile.html">Universal Tensile Testing Machine</a>
+              </li>
+              <li><a href="Muffle_Furnace.HTML">Muffle Furnace</a></li>
+              <li><a href="UV_Weathering.html">UV Weathering Tester</a></li>
+              <li>
+                <a href="Flammability_Chamber.html">Flammability Chamber</a>
+              </li>
+              <li><a href="Hot_air_oven.html">Hot Air Oven</a></li>
+              <li><a href="TearTester.html">Tear Tester</a></li>
+              <li><a href="density_balance.html">Density Balance</a></li>
+              <li><a href="stability_chamber.html">Stability Chamber</a></li>
+              <!-- aaj rite 20 machines add kari sako -->
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HEADER -->
+    <section class="headerr">
+      <h1>Gallery</h1>
+      <p>Machines • Factory • Testing • Videos</p>
+    </section>
+
+    <!-- AUTO SLIDER -->
+    <div class="slider">
+      <img src="img/1.png" />
+    </div>
+
+    <!-- ===== PRODUCTION DEPARTMENT GALLERY ===== -->
+    <section class="gallery-section">
+      <h2>Production Department</h2>
+      <p class="gallery-sub">Our advanced production facilities & processes</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openModal(0)">
+          <img src="img/99.png" alt="Production Image 1" />
+        </div>
+        <div class="gallery-item" onclick="openModal(1)">
+          <img src="img/100.png" alt="Production Image 2" />
+        </div>
+        <div class="gallery-item" onclick="openModal(2)">
+          <img src="img/98.png" alt="Production Image 3" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== POPUP MODAL ===== -->
+    <div class="modal" id="galleryModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="" alt="" />
+        <div class="modal-text">
+          <h3 id="modalTitle">Production Department</h3>
+          <p id="modalDesc">
+            This is dummy content. Here you can describe the production process,
+            machinery, quality control methods, and workflow details.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- producson dipatment end -->
+
+    <!-- video dipatment start -->
+
+    <!-- ===== TECHNICAL VIDEO SECTION ===== -->
+    <section class="tech-video-section">
+      <h2>Introduction Video</h2>
+      <p class="tech-sub">Watch our company machine working demonstration</p>
+
+      <!-- VIDEO THUMB -->
+      <div class="video-thumb" onclick="openVideo()">
+        <video src="img/hexa plast video.mp4" muted></video>
+        <div class="play-icon">▶</div>
+      </div>
+
+      <!-- SUBSCRIBE BUTTON -->
+      <a
+        href="https://www.youtube.com/@hexaplastindia1461/videos"
+        target="_blank"
+        class="subscribe-btn"
+      >
+        View Technical Video
+      </a>
+    </section>
+
+    <!-- ===== VIDEO POPUP ===== -->
+    <div class="video-modal" id="videoModal" onclick="closeVideo()">
+      <div class="video-popup-box" onclick="event.stopPropagation()">
+        <video id="popupVideo" src="img/hexa plast video.mp4" controls></video>
+      </div>
+    </div>
+
+    <!-- video dipatment end -->
+
+    <!-- CERTIFICATES SECTION start -->
+
+    <!-- ===== CERTIFICATES SECTION ===== -->
+    <section class="certificate-section">
+      <h2>Our Certifications & Awards</h2>
+      <p class="cert-sub">Recognized for quality and industrial standards</p>
+
+      <div class="certificate-grid">
+        <div class="certificate-card" onclick="openCert(this)">
+          <img src="img/91.png" alt="Certificate 1" />
+          <h4>ISO 9001:2015</h4>
+        </div>
+
+        <div class="certificate-card" onclick="openCert(this)">
+          <img src="img/92.png" alt="Certificate 2" />
+          <h4>ISO 14001</h4>
+        </div>
+
+        <div class="certificate-card" onclick="openCert(this)">
+          <img src="img/93.png" alt="Certificate 3" />
+          <h4>CE Certification</h4>
+        </div>
+
+        <div class="certificate-card" onclick="openCert(this)">
+          <img src="img/94.png" alt="Certificate 4" />
+          <h4>Calibration Certificate</h4>
+        </div>
+
+        <div class="certificate-card" onclick="openCert(this)">
+          <img src="img/95.jpg" alt="Certificate 5" />
+          <h4>Coustmer Appriciation</h4>
+        </div>
+
+        <div class="certificate-card" onclick="openCert(this)">
+          <img src="img/58.jpg" alt="Certificate 6" />
+          <h4>Coustmer Appriciation</h4>
+        </div>
+
+        <div class="certificate-card" onclick="openCert(this)">
+          <img src="img/57.jpg" alt="Certificate 7" />
+          <h4>Coustmer Appriciation</h4>
+        </div>
+
+        <div class="certificate-card" onclick="openCert(this)">
+          <img src="img/56.jpg" alt="Certificate 8" />
+          <h4>Coustmer Appriciation</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATE POPUP ===== -->
+    <div class="cert-modal" id="certModal" onclick="closeCert()">
+      <div class="cert-popup-box" onclick="event.stopPropagation()">
+        <img id="certPopupImg" src="" />
+      </div>
+    </div>
+
+    <!-- catlog start -->
+    <section class="catalog-section">
+      <h2>Our Product Catalogs</h2>
+      <p class="catalog-sub">
+        View and download our detailed product catalogs.
+      </p>
+
+      <div class="catalog-grid">
+        <div class="catalog-card">
+          <img src="img/54.jpg" alt="Wrap Reel Catalog" />
+          <h3>Our Products Range</h3>
+          <p>Complete Product range and applications.</p>
+
+          <div class="catalog-btns">
+            <a href="img/Hexa-catalogue.pdf" target="_blank" class="view-btn"
+              >View</a
+            >
+            <a href="img/Hexa-catalogue.pdf" download class="download-btn"
+              >Download</a
+            >
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <img src="img/96.png" alt="Yarn Tester Catalog" />
+          <h3>Plastics Testing Machines</h3>
+          <p>Different plastic product testing machine.</p>
+
+          <div class="catalog-btns">
+            <a href="img/Lab Brochure.pdf " target="_blank" class="view-btn"
+              >View</a
+            >
+            <a href="img/Lab Brochure.pdf " download class="download-btn"
+              >Download</a
+            >
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <img src="img/97.png" alt="Company Profile" />
+          <h3>Socketing Bending Machine</h3>
+          <p>Different type of socketing bending machine.</p>
+
+          <div class="catalog-btns">
+            <a
+              href="img/Socketing Bending Machine (5).pdf"
+              target="_blank"
+              class="view-btn"
+              >View</a
+            >
+            <a
+              href="img/Socketing Bending Machine (5).pdf"
+              download
+              class="download-btn"
+              >Download</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- catlog end -->
+
+    <!-- footer start -->
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <img src="img/hexa-logo-png.png" width="300px" height="90px" alt="" />
+          <img src="img/hexa-logo.png" width="300px" height="90px" alt="" />
+          <p style="padding: 10px">
+            Manufacturer of precision rubber testing machines delivering
+            accuracy, durability and reliable performance for industrial
+            applications.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="gallry.html">Gallery</a></li>
+            <li><a href="Product.html">Our Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Service & Support</h3>
+          <p>
+            <strong style="color: #ffffff">📞 Call</strong><br />+91 95379 77333
+            <br />
+            +91 97140 38333
+          </p>
+          <p>✉️ info@hexaplastindia.com</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p>
+            📍 (i) <br /><b>India UNIT- I:-</b> L-4126/1, Phase IV, G.I.D.C.
+            Vatva, Nr. Nika tube cross Road, B/h. New Nirma , Vatava ,
+            Ahmedabad. Gujarat. India.
+          </p>
+          (ii)
+
+          <p>
+            <b> India UNIT- II:-</b> Plot No. 4008, Phase IV, G.I.D.C. Vatva,
+            Nr. Nika tube cross Road, B/h. New Nirma , Vatava , Ahmedabad.
+            Gujarat. India.
+          </p>
+
+          <p>📞 +91 98250 31377 <br />+91 98250 88726</p>
+          <p>✉️ sales@hexaplastindia.com</p>
+
+          <!-- Footer Social Icons -->
+          <div class="social-footer">
+            <a
+              href="https://www.youtube.com/@hexaplastindia1461"
+              target="_blank"
+              class="yt"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/hexaplast18/"
+              target="_blank"
+              class="ig"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.facebook.com/hexa.plast"
+              target="_blank"
+              class="fb"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://wa.me/919016556935" target="_blank" class="wa">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Hexaplast Industries Pvt. Ltd. | All Rights Reserved
+      </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <!-- js -->
+
+    <script>
+      // producson depatment start
+      const images = [
+        {
+          src: "img/99.png",
+          title: "Store",
+          desc: "The store at Hexaplast is well-organized to display and manage a wide range of material testing machines and accessories. All products are systematically arranged for easy identification, inspection, and availability. Our store ensures proper storage conditions to maintain product quality and allows smooth coordination between sales, inventory, and customer requirements, ensuring quick and efficient order fulfillment.",
+        },
+        {
+          src: "img/100.png",
+          title: "Manufacturing Area",
+          desc: "The manufacturing area at Hexaplast is equipped with modern machinery and advanced production facilities to ensure precision, consistency, and high-quality output. Our well-organized setup allows efficient fabrication, assembly, and testing of material testing machines under strict quality control procedures. Skilled technicians and engineers monitor every stage of manufacturing to ensure that each product meets performance standards, durability requirements, and customer specifications before dispatch.",
+        },
+        {
+          src: "img/98.png",
+          title: "Dispatch Area",
+          desc: "The dispatch area at Hexaplast is systematically managed to ensure safe handling, proper packaging, and timely delivery of all testing machines. Each product is carefully inspected, securely packed, and labeled to prevent damage during transportation. Our organized dispatch process ensures that machines reach customers in perfect condition and within the committed delivery schedule.",
+        },
+      ];
+
+      function openModal(index) {
+        document.getElementById("galleryModal").style.display = "flex";
+        document.getElementById("modalImg").src = images[index].src;
+        document.getElementById("modalTitle").innerText = images[index].title;
+        document.getElementById("modalDesc").innerText = images[index].desc;
+      }
+
+      function closeModal() {
+        document.getElementById("galleryModal").style.display = "none";
+      }
+      // producson depatment end
+
+      // vedio dipatment start
+      function openVideo() {
+        const modal = document.getElementById("videoModal");
+        const video = document.getElementById("popupVideo");
+
+        modal.classList.add("active");
+        video.currentTime = 0;
+        video.play();
+      }
+
+      function closeVideo() {
+        const modal = document.getElementById("videoModal");
+        const video = document.getElementById("popupVideo");
+
+        modal.classList.remove("active");
+        video.pause();
+        video.currentTime = 0;
+      }
+
+      // video dipatment end
+
+      // CERTIFICATES SECTION start
+
+      function openCert(card) {
+        const img = card.querySelector("img");
+        const modal = document.getElementById("certModal");
+        const popupImg = document.getElementById("certPopupImg");
+
+        popupImg.src = img.src;
+        modal.classList.add("active");
+      }
+
+      function closeCert() {
+        const modal = document.getElementById("certModal");
+        modal.classList.remove("active");
+      }
+
+      // CERTIFICATES SECTION end
+    </script>
+  </body>
+</html>

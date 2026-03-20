@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- META -->
+    <meta charset="UTF-8" />
+    <meta name="description" content="Sum Number" />
+    <meta name="keywords" content="Sum Number" />
+    <meta name="author" content="dixt viradiya" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TATLE -->
+     <title>Hexaplast | Rubber Testing Machines</title>
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/coustm.css" />
+    <link rel="icon" href="logo_hexa.png">
+    <link rel="apple-touch-icon" href="logo_hexa.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    
+
+  <style>
+    :root{
+      --orange:#F58220;
+      --dark-grey:#5A5A5A;
+      --mid-grey:#8A8A8A;
+      --light-grey:#C7C7C7;
+      --white:#ffffff;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+    body{background:#f7f7f7;color:var(--mid-grey);}
+
+    header{
+      background:#fff;padding:20px 80px;display:flex;justify-content:space-between;align-items:center;
+      box-shadow:0 4px 20px rgba(0,0,0,0.08);
+    }
+    header img{height:90px;}
+
+
+    /* ===== HERO SLIDER (FIXED – ONE SLIDE ONLY) ===== */
+    .hero{padding:90px 0;background:linear-gradient(120deg,#fff,#f1f1f1);overflow:hidden;}
+    .slider{position:relative;max-width:100%;overflow:hidden}
+    .slides{position:relative;width:100%;height:10px;}
+    .slide{
+      position:absolute;
+      inset:0;
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:50px;
+      align-items:center;
+      padding:0 80px;
+      opacity:0;
+      pointer-events:none;
+      transform:translateX(60px);
+      transition:all 0.8s ease;
+    }
+    .slide.active{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateX(0);
+      position:relative;
+    }
+
+    .hero h1{font-size:46px;color:var(--dark-grey);margin-bottom:20px;}
+    .hero h1 span{color:var(--orange);}    
+    .hero p{font-size:18px;margin-bottom:35px;max-width:520px;}
+
+    .btn{
+      background:var(--orange);color:#fff;padding:15px 36px;border-radius:40px;
+      text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(245,130,32,0.4);
+    }
+    .btn:hover{background:#e06f10;}
+
+    .machine-box{
+      background:#fff;border-radius:28px;height:360px;display:flex;align-items:center;justify-content:center;
+      color:var(--light-grey);box-shadow:0 12px 30px rgba(0,0,0,0.1);
+    }
+
+    .slider-dots{text-align:center;margin-top:30px;}
+    .dot{height:12px;width:12px;margin:0 6px;background:#ccc;border-radius:50%;display:inline-block;cursor:pointer;}
+    .dot.active{background:var(--orange);}    
+
+    /* ===== OTHER SECTIONS ===== */
+    .features{padding:90px 80px;background:#fff;}
+    .features h2{text-align:center;font-size:38px;color:var(--dark-grey);margin-bottom:60px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:35px;}
+    .card{padding:35px;border-radius:24px;background:#f9f9f9;box-shadow:0 10px 25px rgba(0,0,0,0.08);border-top:5px solid var(--orange);}    
+    .card h3{margin-bottom:15px;color:var(--dark-grey);}    
+
+    .cta{background:var(--dark-grey);color:#fff;padding:90px 80px;text-align:center;}
+    footer{background:#2f2f2f;color:#ccc;text-align:center;padding:20px;font-size:14px;}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px){
+      header,.features,.cta{padding:30px;}
+      .slide{grid-template-columns:1fr;text-align:center;padding:0 30px;}
+      .machine-box{height:280px;margin-top:30px;}
+      .hero h1{font-size:34px;}
+    }
+</style>
+</head>
+
+<!-- BODY -->
+<body>
+
+<header>
+  <img src="img/hexa-logo.png" alt="Hexaplast Logo" width="250px">
+  <nav class="navbar">
+  <ul class="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallry.html">Gallery</a></li>
+
+    <!-- MACHINES DROPDOWN -->
+    <li class="dropdown">
+      <a href="Product.html">Product ▾</a>
+      <ul class="dropdown-menu" id="machinesMenu">
+        <li><a href="tensile.html">Universal Tensile Testing Machine</a></li>
+        <li><a href="Muffle_Furnace.HTML">Muffle Furnace</a></li>
+        <li><a href="UV_Weathering.html">UV Weathering Tester</a></li>
+        <li><a href="Flammability_Chamber.html">Flammability Chamber</a></li>
+        <li><a href="Hot_air_oven.html">Hot Air Oven</a></li>
+        <li><a href="TearTester.html">Tear Tester</a></li>
+        <li><a href="density_balance.html">Density Balance</a></li>
+        <li><a href="stability_chamber.html">Stability Chamber</a></li>  
+        <!-- aaj rite 20 machines add kari sako -->
+      </ul>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+</header>
+
+
+<!-- slider -->
+
+<section class="hero slider fade-up" id="sliders_background_img">
+  <div class="slides">
+    <div class="slide active">
+      <div class="slide-text">
+        <h1 style="color: #ffffff;">Engineering  <span>Excellence </span> in Rubber Testing</h1>
+        <p style="color: #ffffff;">High accuracy rubber testing machines designed for industrial excellence.</p>
+        <a href="Product.html" class="btn">View Machines</a>
+      </div>
+      <div class="machine-image">
+       <img src="img/59.jpg"
+       alt="Tensile Testing Machine"
+       style="width:100%; height:100%; object-fit:contain; border-radius:25px;">
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-text">
+        <h1 style="color: #ffffff;">Advanced <span>Testing</span> Technology</h1>
+        <p style="color: #ffffff;">Engineered for durability, precision and long-term performance.</p>
+        <a href="our-technology.html" class="btn">Our Technology</a>
+      </div>
+      <div class="machine-image"> 
+        <img src="img/61.jpg"
+       alt="Tensile Testing Machine"
+       style="width:100%; height:100%; object-fit:contain; border-radius:25px;">
+      </div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-text">
+        <h1 style="color: #ffffff;">Hexaplast  <span>Trusted by</span> industries</h1>
+        <p style="color: #ffffff;">Serving rubber, polymer and manufacturing industries across India.</p>
+        <a href="contact.html" class="btn">Contact Us</a>
+      </div>
+     <div class="machine-image">
+        <img src="img/62.jpg"
+       alt="Tensile Testing Machine"
+       style="width:100%; height:100%; object-fit:contain; border-radius:25px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+
+<!-- Rubber Testing Equipment -->
+<section class="about-section fade-up">
+  <h2>About Us</h2>
+  <p>
+    Hexaplast Industries Pvt. Ltd. is a trusted manufacturer and Exporter of precision rubber
+    testing machines. With a strong focus on accuracy, durability and quality,
+    we deliver reliable testing solutions for rubber, polymer, laboratory and
+    manufacturing industries across India.
+  </p>
+</section>
+
+
+
+<!-- our product -->
+
+<!-- ===== PRODUCTS LIST SECTION ===== -->
+<section class="all-products-section fade-up">
+<h2>Our Machines</h2>
+<div class="all-products-grid" style="padding-bottom: 15px;">
+
+<!-- Product Card -->
+<div class="machine-card">
+<div class="machine-image">
+  <img src="img/16.jpg"
+       alt="Tensile Testing Machine"
+       style="width:100%; height:100%; object-fit:contain; border-radius:25px;">
+</div>
+<h3>UTM Tensile Testing Machine</h3>
+<p>High precision tensile strength testing for rubber and polymer products.</p>
+<a href="tensile.html" class="btn small">View Details</a>
+</div>
+
+
+<div class="machine-card">
+<div class="machine-image">
+  <img src="img/75.png"
+       alt="Tensile Testing Machine"
+       style="width:100%; height:100%; object-fit:contain; border-radius:25px;">
+</div>
+<h3>Abrasion Tester (DIN Type)</h3>
+<p>Measures resistance of rubber to Abrasion accurately</p>
+<a href="abrasion.html" class="btn small">View Details</a>
+</div>
+
+
+<div class="machine-card">
+<div class="machine-image">
+  <img src="img/18.jpg"
+       alt="Tensile Testing Machine"
+       style="width:100%; height:100%; object-fit:contain; border-radius:25px;">
+</div>
+<h3>Density Balance</h3>
+<p>Accurate measurement of rubber material density</p>
+<a href="density_balance.html" class="btn small">View Details</a>
+</div>
+
+
+<div class="machine-card">
+<div class="machine-image">
+  <img src="img/19.jpg"
+       alt="Tensile Testing Machine"
+       style="width:100%; height:100%; object-fit:contain; border-radius:25px;">
+</div>
+<h3>Stability Chamber</h3>
+<p>Used for accelerated aging and performance testing</p>
+<a href="stability_chamber.html" class="btn small">View Details</a>
+</div>
+
+
+<!-- Repeat same card structure for remaining machines (up to 20) -->
+</div>
+
+<a href="Product.html" class="btn">View All Machines</a>
+</section>
+
+
+
+<!-- our product breang -->
+
+<section class="range-section fade-up">
+  <h2>Our Products Range</h2>
+  <p class="range-sub">We serve rubber testing solutions with precision.</p>
+
+  <div class="range-grid">
+
+    <div class="range-card">
+      <img src="img/20.png" alt="Rubber Industry">
+      <span>Plastic Testing</span>
+    </div>
+
+    <div class="range-card">
+      <a href="https://hexaplastindia.com/cable-manufacture-industries/">
+      <img src="img/21.png" alt="Tyre Industry">
+      <span>Cable / Battery Testing</span>
+      </a>
+    </div>
+
+    <div class="range-card">
+      <img src="img/22.png" alt="Automobile Industry">
+      <span>Furniture / Toy Testing</span>
+    </div>
+
+    <div class="range-card">
+      <img src="img/23.png" alt="Polymer Industry">
+      <span>Textile Testing</span>
+    </div>
+
+    <div class="range-card">
+      <img src="img/24.png" alt="Pharma Industry">
+      <span>Paper Testing</span>
+    </div>
+
+    <div class="range-card">
+      <img src="img/25.png" alt="Cable Industry">
+      <span>Medical Plastic Testing</span>
+    </div>
+
+    <div class="range-card">
+      <img src="img/26.png" alt="Footwear Industry">
+      <span>Civil Testing</span>
+    </div>
+
+    <div class="range-card">
+      <img src="img/27.png" alt="Laboratory">
+      <span>Footwear Testing</span>
+    </div>
+
+    <div class="range-card">
+      <img src="img/30.jpg" alt="Manufacturing">
+      <span>Paint & Ink Testing</span>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!--Why Choose Us-->
+<section class="products-section fade-up">
+<h2>Why Choose Us ?</h2>
+<div class="products-wrapper">
+<div class="product-card">
+<div class="machine-box"><img src="img/10.png" alt="" width="100px" height="100px"></div>
+<h3>High Accuracy</h3>
+</div>
+<div class="product-card">
+<div class="machine-box"><img src="img/11.png" alt="" width="100px" height="100px"></div>
+<h3>Durable Design</h3>
+</div>
+<div class="product-card">
+<div class="machine-box"><img src="img/12.png " alt="" width="100px" height="100px"></div>
+<h3>Advanced Testing</h3>
+</div>
+<div class="product-card">
+<div class="machine-box"><img src="img/13.png" alt="" width="100px" height="100px"></div>
+<h3>Easy Operation</h3>
+</div>
+<div class="product-card">
+<div class="machine-box"><img src="img/14.png" alt="" width="100px" height="100px"></div>
+<h3>Innovative Solutions</h3>
+</div>
+</div>
+</section>
+
+
+
+<!-- Exhibition – Indplas-->
+<section class="expo-section">
+  <h2>Exhibition</h2>
+  <p class="expo-sub">Our exhibition journey from 2022 to 2025</p>
+
+  <div class="expo-grid">
+
+    <div class="expo-card" onclick="openLightbox(this)">
+      <img src="img/44.png" alt="Indplas 2022">
+      <div class="expo-overlay">
+        <span class="expo-year">2022 Exhibition - Indplas</span>
+      </div>
+    </div>
+
+    <div class="expo-card" onclick="openLightbox(this)">
+      <img src="img/45.png" alt="Indplas 2023">
+      <div class="expo-overlay">
+        <span class="expo-year">2022 Exhibition - Indplas </span>
+      </div>
+    </div>
+
+    <div class="expo-card" onclick="openLightbox(this)">
+      <img src="img/46.png" alt="Indplas 2024">
+      <div class="expo-overlay">
+        <span class="expo-year">2022 Exhibition - Plastasia</span>
+      </div>
+    </div>
+
+    <div class="expo-card" onclick="openLightbox(this)">
+      <img src="img/47.png" alt="Indplas 2025">
+      <div class="expo-overlay">
+        <span class="expo-year">2022 Exhibition - Plastasia</span>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="expo-grid" style="margin-top: 30px; padding-bottom: 15px;">
+
+    <div class="expo-card" onclick="openLightbox(this)">
+      <img src="img/49.png" alt="Indplas 2023">
+      <div class="expo-overlay">
+        <span class="expo-year">2023 Exhibition - Plastasia</span>
+      </div>
+    </div>
+
+    <div class="expo-card" onclick="openLightbox(this)">
+      <img src="img/43.png" alt="Indplas 2024">
+      <div class="expo-overlay">
+        <span class="expo-year">2024 Exhibition-Plast Focus</span>
+      </div>
+    </div>
+
+    <div class="expo-card" onclick="openLightbox(this)">
+      <img src="img/50.png" alt="Indplas 2025">
+      <div class="expo-overlay">
+        <span class="expo-year">2025 Exhibition - Plastasia</span>
+      </div>
+    </div>
+
+    <div class="expo-card" onclick="openLightbox(this)">
+      <img src="img/104.jpg" alt="Indplas 2022">
+      <div class="expo-overlay">
+        <span class="expo-year">2026 Exhibition - Plastindia</span>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="gallry.html" class="btn">View Gallery</a>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg">
+  <span class="close-btn">✕</span>
+</div>
+
+
+
+
+
+<!-- our groth patmer -->
+
+<section class="partners-section fade-up">
+  <h2>Our Growth Partners</h2>
+  <p class="partners-sub">
+    Trusted by leading companies across multiple industries
+  </p>
+
+  <div class="partners-logos">
+    <div class="partner-logo">
+      <img src="img/31.png" alt="Company Logo">
+    </div>
+    <div class="partner-logo">
+      <img src="img/32.png" alt="Company Logo">
+    </div>
+    <div class="partner-logo">
+      <img src="img/33.png" alt="Company Logo">
+    </div>
+    <div class="partner-logo">
+      <img src="img/34.png" alt="Company Logo">
+    </div>
+    <div class="partner-logo">
+      <img src="img/35.png" alt="Company Logo">
+    </div>
+    <div class="partner-logo">
+      <img src="img/36.png" alt="Company Logo">
+    </div>
+     <div class="partner-logo">
+      <img src="img/37.png" alt="Company Logo">
+    </div>
+     <div class="partner-logo">
+      <img src="img/38.png" alt="Company Logo">
+    </div>
+     <div class="partner-logo">
+      <img src="img/39.png" alt="Company Logo">
+    </div>
+     <div class="partner-logo">
+      <img src="img/40.png" alt="Company Logo">
+    </div>
+     <div class="partner-logo">
+      <img src="img/41.png" alt="Company Logo">
+    </div>
+     <div class="partner-logo">
+      <img src="img/42.png" alt="Company Logo">
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- need expert rubber testing solutions? -->
+<section class="cta zoom-in">
+  <h2>Need Expert Rubber Testing Solutions?</h2>
+  <p>Get in touch with Hexaplast today</p><br>
+  <a href="contact.html" class="btn">Contact Us</a>
+</section>
+
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+<div class="footer-container">
+<div class="footer-col">
+<img src="img/hexa-logo-png.png" width="300px" height="90px" alt="">
+<img src="img/hexa-logo.png" width="300px" height="90px" alt="">
+<p style="padding: 10px;">
+Manufacturer of precision rubber testing machines delivering accuracy,
+durability and reliable performance for industrial applications.
+</p>
+</div>
+
+
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="gallry.html">Gallery</a></li>
+<li><a href="Product.html">Our Products</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+
+<div class="footer-col">
+<h3>Service & Support</h3>
+<p><strong style="color: #ffffff;">📞 Call</strong><br>+91 95379 77333 <br>  +91 97140 38333</p>
+<p>✉️ info@hexaplastindia.com</p>
+</div>
+
+
+<div class="footer-col">
+<h3>Contact Info</h3>
+<p>📍 (i) <br><b>India UNIT- I:-</b> L-4126/1, Phase IV, G.I.D.C. Vatva, Nr. Nika tube cross Road, B/h. New Nirma , Vatava , Ahmedabad. Gujarat. India. </p> (ii)
+
+<P><b> India UNIT- II:-</b> Plot No. 4008, Phase IV, G.I.D.C. Vatva, Nr. Nika tube cross Road, B/h. New Nirma , Vatava , Ahmedabad. Gujarat. India.</p>
+
+<p>📞  +91 98250 31377 <br>+91 98250 88726</p>
+<p>✉️ sales@hexaplastindia.com</p>
+
+<!-- Footer Social Icons -->
+<div class="social-footer">
+    <a href="https://www.youtube.com/@hexaplastindia1461" target="_blank" class="yt">
+        <i class="fab fa-youtube"></i>
+    </a>
+
+    <a href="https://www.instagram.com/hexaplast18/" target="_blank" class="ig">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://www.facebook.com/hexa.plast" target="_blank" class="fb">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="https://wa.me/919016556935" target="_blank" class="wa">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+© 2025 Hexaplast Industries Pvt. Ltd. | All Rights Reserved
+</div>
+</footer>
+
+<script>
+  // ===== SCROLL ANIMATION =====
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
+
+  // ===== SLIDER (ABSOLUTE MODE – FIXED) =====
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+
+  function showSlide(index){
+    slides.forEach((slide,i)=>{
+      slide.classList.toggle('active', i === index);
+      dots[i].classList.toggle('active', i === index);
+    });
+    current = index;
+  }
+
+  dots.forEach((dot,i)=>{
+    dot.addEventListener('click',()=>showSlide(i));
+  });
+
+  setInterval(()=>{
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 4000);
+</script>
+
+<!-- CUSTOM js -->
+<script src="js/all.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/iziToast.min.js"></script>
+<script src="js/sweetalert2@11.js"></script>
+<script src="server/server.js"></script>
+<script src="js/coustm.js"></script>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Machines | Hexaplast</title>
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/coustm.css" />
+    <link rel="icon" href="logo_hexa.png" />
+    <link rel="apple-touch-icon" href="logo_hexa.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <style>
+      :root {
+        --orange: #f58220;
+        --dark: #2e2e2e;
+        --grey: #6f6f6f;
+        --light: #f6f6f6;
+      }
+
+      .btn:hover {
+        background: #e06f10;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Segoe UI, Arial, sans-serif;
+      }
+
+      body {
+        background: var(--light);
+        color: var(--grey);
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background: #fff;
+        padding: 20px 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      header img {
+        height: 90px;
+      }
+     
+      /* ===== PAGE HEADER ===== */
+      .page-header {
+        padding: 80px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #f9f9f9, #ffffff);
+      }
+      .page-header h1 {
+        font-size: 42px;
+        color: var(--dark);
+      }
+      .page-header p {
+        margin-top: 10px;
+        font-size: 17px;
+      }
+
+      /* ===== MACHINES GRID ===== */
+      .machines-section {
+        padding: 70px 80px;
+      }
+      .machines-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 35px;
+      }
+
+      /* ===== MACHINE CARD ===== */
+      .machine-card {
+        background: #ffffff;
+        border-radius: 25px;
+        padding: 25px;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .machine-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      }
+
+      /* IMAGE */
+      .machine-img {
+        height: 180px;
+        background: #f7f7f7;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .machine-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 18px;
+      }
+
+      /* TEXT */
+      .machine-card h3 {
+        font-size: 18px;
+        color: var(--dark);
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1100px) {
+        .machines-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .machines-section {
+          padding: 40px 20px;
+        }
+        .machines-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 900px) {
+        header,
+        .page-title,
+        .gallery {
+          padding: 40px 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== HEADER ===== -->
+    <header>
+      <img src="img/hexa-logo.png" alt="Hexaplast Logo" />
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallry.html">Gallery</a></li>
+
+          <!-- MACHINES DROPDOWN -->
+          <li class="dropdown">
+            <a href="Product.html">Product ▾</a>
+            <ul class="dropdown-menu" id="machinesMenu">
+              <li>
+                <a href="tensile.html">Universal Tensile Testing Machine</a>
+              </li>
+              <li><a href="Muffle_Furnace.HTML">Muffle Furnace</a></li>
+              <li><a href="UV_Weathering.html">UV Weathering Tester</a></li>
+              <li>
+                <a href="Flammability_Chamber.html">Flammability Chamber</a>
+              </li>
+              <li><a href="Hot_air_oven.html">Hot Air Oven</a></li>
+              <li><a href="TearTester.html">Tear Tester</a></li>
+              <li><a href="density_balance.html">Density Balance</a></li>
+              <li><a href="stability_chamber.html">Stability Chamber</a></li>
+              <!-- aaj rite 20 machines add kari sako -->
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="page-header">
+      <h1>Our Machines</h1>
+      <p>Precision Rubber Testing Machines by Hexaplast</p>
+    </section>
+
+    <!-- ===== MACHINES GRID ===== -->
+    <section class="machines-section">
+      <div class="machines-grid">
+        <!-- MACHINE 1 -->
+        <a href="tensile.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/63.png" alt="Tensile Testing Machine" />
+          </div>
+          <h3>Universal Tensile Testing Machine</h3>
+        </a>
+
+        <!-- MACHINE 2 -->
+        <a href="Muffle_Furnace.HTML" class="machine-card">
+          <div class="machine-img">
+            <img src="img/64.png" alt="Hardness Tester" />
+          </div>
+          <h3>Muffle Furnace</h3>
+        </a>
+
+        <!-- MACHINE 3 -->
+        <a href="UV_Weathering.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/65.png" alt="Compression Machine" />
+          </div>
+          <h3>UV Weathering Tester</h3>
+        </a>
+
+        <!-- MACHINE 4 -->
+        <a href="Flammability_Chamber.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/66.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Flammability Chamber</h3>
+        </a>
+
+        <!-- MACHINE 5 -->
+        <a href="Hot_air_oven.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/67.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Hot Air Oven</h3>
+        </a>
+
+        <!-- MACHINE 6 -->
+        <a href="TearTester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/16.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Tear Tester</h3>
+        </a>
+
+        <!-- MACHINE 7 -->
+        <a href="density_balance.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/68.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Density Balance</h3>
+        </a>
+
+        <!-- MACHINE 8 -->
+        <a href="stability_chamber.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/69.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Stability Chamber</h3>
+        </a>
+
+        <!-- MACHINE 9 -->
+        <a href="Compression_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/70.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Compression Tester</h3>
+        </a>
+
+        <!-- MACHINE 10 -->
+        <a href="Ross_Flex_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/71.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Ross Flex Tester</h3>
+        </a>
+
+        <!-- MACHINE 11 -->
+        <a href="De_Mattia_Flex_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/72.png" alt="Abrasion Tester" />
+          </div>
+          <h3>De-Mattia Flex Tester</h3>
+        </a>
+
+        <!-- MACHINE 12 -->
+        <a href="Shore_A_Hardness_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/73.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Shore A Hardness Tester</h3>
+        </a>
+
+        <!-- MACHINE 13 -->
+        <a href="Rebound_Resilience_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/74.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Rebound Resilience Tester</h3>
+        </a>
+
+        <!-- MACHINE 14 -->
+        <a href="abrasion.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/75.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Abrasion Tester (DIN Type / DuPont Type)</h3>
+        </a>
+
+        <!-- MACHINE 15 -->
+        <a href="Oscillating_Disc_Rheometer.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/76.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Oscillating Disc Rheometer (ODR)</h3>
+        </a>
+
+        <!-- MACHINE 16 -->
+        <a href="Mooney_Viscometer.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/77.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Mooney Viscometer</h3>
+        </a>
+
+        <!-- MACHINE 17 -->
+        <a href="ozone_environmental_chamber.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/78.png" alt="Abrasion Tester" />
+          </div>
+          <h3>ozone environmental chamber</h3>
+        </a>
+
+        <!-- MACHINE 18 -->
+        <a href="Flexing_Endurance_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/79.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Flexing Endurance Tester</h3>
+        </a>
+
+        <!-- MACHINE 19 -->
+        <a href="Adhesion_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/80.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Adhesion Tester</h3>
+        </a>
+
+        <!-- MACHINE 20 -->
+        <a href="Rubber_Hardness_Teste.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/81.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Rubber Hardness Tester (IRHD Type)</h3>
+        </a>
+
+        <!-- MACHINE 21 -->
+        <a href="Rubber_Cutting_Press.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/82.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Rubber Cutting Press</h3>
+        </a>
+
+        <!-- MACHINE 22 -->
+        <a href="Die_Cutter_OR_Dumbbell_Cutter.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/83.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Die Cutter / Dumbbell Cutter</h3>
+        </a>
+
+        <!-- MACHINE 23 -->
+        <a href="Gas_Permeability_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/84.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Gas Permeability Tester</h3>
+        </a>
+
+        <!-- MACHINE 24 -->
+        <a
+          href="Rubber_Hose_pressure_Testing_Machine.html"
+          class="machine-card"
+        >
+          <div class="machine-img">
+            <img src="img/85.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Rubber Hose pressure Testing Machine</h3>
+        </a>
+
+        <!-- MACHINE 25 -->
+        <a href="Low_Temperature_Brittleness_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/86.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Low Temperature Brittleness Tester</h3>
+        </a>
+
+        <!-- MACHINE 26 -->
+        <a href="thickness_gauge.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/87.png" alt="Abrasion Tester" />
+          </div>
+          <h3>thickness gauge</h3>
+        </a>
+
+        <!-- MACHINE 27 -->
+        <a href="Heat_Resistance_Tester.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/88.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Heat Resistance Tester</h3>
+        </a>
+
+        <!-- MACHINE 28 -->
+        <a href="Aging_Oven .html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/89.png" alt="Abrasion Tester" />
+          </div>
+          <h3>Aging Oven</h3>
+        </a>
+
+        <!-- MACHINE 29 -->
+        <a href="sheet_moudling_press.html" class="machine-card">
+          <div class="machine-img">
+            <img src="img/90.png" alt="Abrasion Tester" />
+          </div>
+          <h3>sheet moudling press</h3>
+        </a>
+        <!-- 👉 આ જ pattern copy-paste કરીને 20 machines add કરો -->
+      </div>
+    </section>
+
+    <!-- footer start -->
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <img src="img/hexa-logo-png.png" width="300px" height="90px" alt="" />
+          <img src="img/hexa-logo.png" width="300px" height="90px" alt="" />
+          <p style="padding: 10px">
+            Manufacturer of precision rubber testing machines delivering
+            accuracy, durability and reliable performance for industrial
+            applications.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="gallry.html">Gallery</a></li>
+            <li><a href="Product.html">Our Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Service & Support</h3>
+          <p>
+            <strong style="color: #ffffff">📞 Call</strong><br />+91 95379 77333
+            <br />
+            +91 97140 38333
+          </p>
+          <p>✉️ info@hexaplastindia.com</p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p>
+            📍 (i) <br /><b>India UNIT- I:-</b> L-4126/1, Phase IV, G.I.D.C.
+            Vatva, Nr. Nika tube cross Road, B/h. New Nirma , Vatava ,
+            Ahmedabad. Gujarat. India.
+          </p>
+          (ii)
+
+          <p>
+            <b> India UNIT- II:-</b> Plot No. 4008, Phase IV, G.I.D.C. Vatva,
+            Nr. Nika tube cross Road, B/h. New Nirma , Vatava , Ahmedabad.
+            Gujarat. India.
+          </p>
+
+          <p>📞 +91 98250 31377 <br />+91 98250 88726</p>
+          <p>✉️ sales@hexaplastindia.com</p>
+
+          <!-- Footer Social Icons -->
+          <div class="social-footer">
+            <a
+              href="https://www.youtube.com/@hexaplastindia1461"
+              target="_blank"
+              class="yt"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+
+            <a
+              href="https://www.instagram.com/hexaplast18/"
+              target="_blank"
+              class="ig"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+
+            <a
+              href="https://www.facebook.com/hexa.plast"
+              target="_blank"
+              class="fb"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://wa.me/919016556935" target="_blank" class="wa">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Hexaplast Industries Pvt. Ltd. | All Rights Reserved
+      </div>
+    </footer>
+
+    <!-- footer end -->
+  </body>
+</html>
